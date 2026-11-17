@@ -1,7 +1,7 @@
-# StreamFlix – Streaming Platform Data Analysis
+# Netflix – Streaming Platform Data Analysis
 
 ## 📌 Scenario
-StreamFlix is a globally growing subscription-based video-on-demand (VOD) platform that provides entertainment services to users across different countries. 
+Netflix is a globally growing subscription-based video-on-demand (VOD) platform that provides entertainment services to users across different countries. 
 
 The company wants to develop a comprehensive Streaming Management System to store and manage its daily viewing activities, user subscriptions, and content library in a structured database. The system will maintain information about users, profiles, subscription plans, content, and watch history.
 
@@ -12,7 +12,7 @@ The platform stores personal and account information about every user, such as t
 Users can create different profiles under their main account to keep viewing preferences separate. The system stores the profile name and the designated age group (Kids, Teen, Adult). Each profile is linked to a specific user.
 
 ### 3. Plans
-StreamFlix offers different subscription tiers to its users, such as:
+Netflix offers different subscription tiers to its users, such as:
 - Basic
 - Standard / Regular
 - Premium
@@ -24,7 +24,7 @@ The platform hosts a massive library of entertainment. The system stores differe
 - Movies
 - TV Shows
 
-For every piece of content, StreamFlix stores the title, genre, release year, duration in minutes, and maturity rating.
+For every piece of content, Netflix stores the title, genre, release year, duration in minutes, and maturity rating.
 
 ### 5. Watch History
 Users perform streaming activities through their profiles. The system records all viewing sessions, including:
@@ -35,11 +35,11 @@ One profile can have many watch history records, and one piece of content can be
 
 ---
 
-## 📊 StreamFlix SQL Project – Business Analysis Questions
+## 📊 Netflix SQL Project – Business Analysis Questions
 
 ### A. User & Basic Analysis
-1. StreamFlix wants to maintain a user directory. Display complete details of all registered users.
-2. Management wants to know the different countries StreamFlix users are coming from. Display the unique user countries.
+1. Netflix wants to maintain a user directory. Display complete details of all registered users.
+2. Management wants to know the different countries Netflix users are coming from. Display the unique user countries.
 3. Identify all users whose current account status is 'Active'.
 4. Find users who are registered in either the 'Premium' or 'Standard' plan (PlanID 2 or 3).
 5. Identify users who are registered in countries other than the 'United Kingdom'.
@@ -133,11 +133,11 @@ One profile can have many watch history records, and one piece of content can be
 ---
 
 ## 💡 PROJECT CONCLUSION
-The StreamFlix SQL analysis provides a complete view of the platform's users, profiles, subscription plans, content catalog, and watch history.
+The Netflix SQL analysis provides a complete view of the platform's users, profiles, subscription plans, content catalog, and watch history.
 
-The analysis helps StreamFlix understand user demographics, monitor account revenue, evaluate content performance, track streaming engagement, and analyze viewing habits. 
+The analysis helps Netflix understand user demographics, monitor account revenue, evaluate content performance, track streaming engagement, and analyze viewing habits. 
 
-User and platform behavior analysis helps the company identify high-value subscribers, active streaming relationships, multiple-profile accounts, and users interacting with different genres and content types. `CASE`-based classification further helps StreamFlix segment audiences, viewing durations, and user retention risks for better analysis.
+User and platform behavior analysis helps the company identify high-value subscribers, active streaming relationships, multiple-profile accounts, and users interacting with different genres and content types. `CASE`-based classification further helps Netflix segment audiences, viewing durations, and user retention risks for better analysis.
 
 Overall, this SQL project demonstrates how streaming and VOD data can be organized, analyzed, and transformed into meaningful business insights for better decision-making.
 
