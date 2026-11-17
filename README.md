@@ -107,10 +107,9 @@ One profile can have many watch history records, and one piece of content can be
 6. **Identifying "Dead" Content:** Display a list of all Content Titles and their total minutes watched, including content that has never been watched.
 
 ### G. User Viewing Behavior
-1. Identify users whose total minutes watched is greater than the platform average.
-2. Identify users who have an 'Active' subscription status but 0 records in the `WatchHistory` table.
-3. Identify users who have created multiple profiles (more than 3).
-4. Find profiles who have both a 'Kids' `AgeGroup` and have watched 'R-rated' content.
+1. Identify users who have an 'Active' subscription status but 0 records in the `WatchHistory` table.
+2. Identify users who have created multiple profiles (more than 3).
+3. Find profiles who have both a 'Kids' `AgeGroup` and have watched 'R-rated' content.
 
 ### H. User & Platform Relationship Analysis
 1. Display each profile's name along with the subscription plan name their parent account is paying for.
