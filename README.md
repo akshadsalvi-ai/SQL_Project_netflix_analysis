@@ -118,11 +118,9 @@ One profile can have many watch history records, and one piece of content can be
 3. Identify profiles operating under the same User Account (list `UserID` and the count of all associated profiles).
 
 ### I. Advanced & Cross-Content Preference Analysis
-1. Identify profiles that are watching both 'Action' movies and 'Comedy' movies.
-2. Identify profiles that have watched 'TV Shows' but have never watched a 'Movie'.
-3. Identify users who have a 'Premium' plan but only have 1 profile created (Underutilizing their plan).
-4. Rank the most popular content (by total `MinutesWatched`) within each specific genre.
-5. **Cross-Genre Audience Overlap:** Find the profiles of users who have watched at least one 'Sci-Fi' title and overlap that with profiles who have watched 'Documentaries'.
+1. Identify users who have a 'Premium' plan but only have 1 profile created (Underutilizing their plan).
+2. Rank the most popular content (by total `MinutesWatched`) within each specific genre.
+3. **Cross-Genre Audience Overlap:** Find the profiles of users who have watched at least one 'Sci-Fi' title and overlap that with profiles who have watched 'Documentaries'.
 
 ### J. Customer & Content Risk Classification
 1. **CASE** – Classify profiles into 'Children', 'Teenagers', and 'Adults' based on their `AgeGroup`.
