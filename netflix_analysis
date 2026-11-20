@@ -1,0 +1,601 @@
+create database Netflix_DB;
+Use netflix_db;
+
+create table plans (
+PlanID INT PRIMARY KEY,
+    PlanName VARCHAR(50),
+    MonthlyPrice DECIMAL(5, 2),
+    MaxResolution VARCHAR(20)
+);
+INSERT INTO Plans (PlanID, PlanName, MonthlyPrice, MaxResolution)
+VALUES 
+(1, 'Basic', 8.99, '720p'),
+(2, 'Standard', 13.99, '1080p'),
+(3, 'Premium', 17.99, '4K');
+
+CREATE TABLE Users (
+    UserID INT PRIMARY KEY,
+    Email VARCHAR(100) UNIQUE,
+    Country VARCHAR(50),
+    RegistrationDate DATE,
+    Status VARCHAR(20),
+    PlanID INT,
+    FOREIGN KEY (PlanID) REFERENCES Plans(PlanID)
+);
+INSERT INTO Users (UserID, Email, Country, RegistrationDate, Status, PlanID)
+VALUES 
+(101, 'user101@gmail.com', 'United States', '2021-03-12', 'Active', 3),
+(102, 'user102@yahoo.com', 'Canada', '2021-07-22', 'Cancelled', 2),
+(103, 'user103@hotmail.com', 'India', '2022-01-05', 'Active', 1),
+(104, 'user104@gmail.com', 'Australia', '2022-02-14', 'Active', 3),
+(105, 'user105@outlook.com', 'Germany', '2022-05-30', 'Active', 2),
+(106, 'user106@gmail.com', 'France', '2022-08-11', 'Suspended', 1),
+(107, 'user107@yahoo.com', 'United Kingdom', '2022-11-20', 'Active', 3),
+(108, 'user108@gmail.com', 'Brazil', '2023-01-15', 'Active', 1),
+(109, 'user109@hotmail.com', 'Mexico', '2023-03-10', 'Cancelled', 2),
+(110, 'user110@gmail.com', 'Japan', '2023-04-22', 'Active', 3),
+(111, 'user111@yahoo.com', 'United States', '2023-06-05', 'Active', 2),
+(112, 'user112@outlook.com', 'India', '2023-07-19', 'Active', 3),
+(113, 'user113@gmail.com', 'Canada', '2023-09-01', 'Active', 1),
+(114, 'user114@hotmail.com', 'Australia', '2023-10-14', 'Suspended', 2),
+(115, 'user115@gmail.com', 'United Kingdom', '2023-11-30', 'Active', 3),
+(116, 'user116@yahoo.com', 'Germany', '2024-01-02', 'Active', 1),
+(117, 'user117@gmail.com', 'France', '2024-01-15', 'Active', 3),
+(118, 'user118@outlook.com', 'India', '2024-02-20', 'Cancelled', 2),
+(119, 'user119@hotmail.com', 'Brazil', '2024-03-05', 'Active', 1),
+(120, 'user120@gmail.com', 'Japan', '2024-04-10', 'Active', 3),
+(121, 'user121@yahoo.com', 'United States', '2021-12-01', 'Active', 3),
+(122, 'user122@gmail.com', 'Mexico', '2022-03-15', 'Active', 2),
+(123, 'user123@outlook.com', 'Canada', '2022-06-25', 'Cancelled', 1),
+(124, 'user124@hotmail.com', 'India', '2022-09-10', 'Active', 3),
+(125, 'user125@gmail.com', 'Australia', '2022-12-05', 'Active', 2),
+(126, 'user126@yahoo.com', 'United Kingdom', '2023-02-18', 'Suspended', 1),
+(127, 'user127@gmail.com', 'Germany', '2023-05-12', 'Active', 3),
+(128, 'user128@outlook.com', 'France', '2023-08-22', 'Active', 2),
+(129, 'user129@hotmail.com', 'Brazil', '2023-10-05', 'Active', 1),
+(130, 'user130@gmail.com', 'Japan', '2023-12-15', 'Cancelled', 3),
+(131, 'user131@yahoo.com', 'United States', '2024-01-20', 'Active', 2),
+(132, 'user132@gmail.com', 'Mexico', '2024-02-28', 'Active', 1),
+(133, 'user133@outlook.com', 'Canada', '2024-03-15', 'Active', 3),
+(134, 'user134@hotmail.com', 'India', '2024-04-05', 'Active', 2),
+(135, 'user135@gmail.com', 'Australia', '2024-05-10', 'Active', 1),
+(136, 'user136@yahoo.com', 'United Kingdom', '2024-06-01', 'Suspended', 3),
+(137, 'user137@gmail.com', 'Germany', '2024-07-12', 'Active', 2),
+(138, 'user138@outlook.com', 'France', '2024-08-20', 'Active', 1),
+(139, 'user139@hotmail.com', 'Brazil', '2024-09-05', 'Active', 3),
+(140, 'user140@gmail.com', 'Japan', '2024-09-25', 'Active', 2);
+
+CREATE TABLE Profiles (
+    ProfileID INT PRIMARY KEY,
+    UserID INT,
+    ProfileName VARCHAR(50),
+    AgeGroup VARCHAR(20),
+    FOREIGN KEY (UserID) REFERENCES Users(UserID)
+);
+INSERT INTO Profiles (ProfileID, UserID, ProfileName, AgeGroup) VALUES 
+(101, 101, 'Dad', 'Adult'), (102, 101, 'Mom', 'Adult'), (103, 101, 'Timmy', 'Kids'),
+(104, 102, 'Main', 'Adult'),
+(105, 103, 'Rahul', 'Adult'), (106, 103, 'Sneha', 'Adult'),
+(107, 104, 'Chloe', 'Adult'), (108, 104, 'Jack', 'Teen'), (109, 104, 'Cartoons', 'Kids'),
+(110, 105, 'Hans', 'Adult'), (111, 105, 'Greta', 'Teen'),
+(112, 106, 'Pierre', 'Adult'),
+(113, 107, 'Arthur', 'Adult'), (114, 107, 'Rose', 'Adult'), (115, 107, 'Guest', 'Adult'),
+(116, 108, 'Lucas', 'Adult'),
+(117, 109, 'Maria', 'Adult'), (118, 109, 'Carlos', 'Teen'),
+(119, 110, 'Kenji', 'Adult'), (120, 110, 'AnimeZone', 'Teen'),
+(121, 111, 'Alex', 'Adult'), (122, 111, 'Sam', 'Teen'), (123, 111, 'Kids', 'Kids'),
+(124, 112, 'Vikram', 'Adult'), (125, 112, 'Aditi', 'Adult'),
+(126, 113, 'Liam', 'Adult'),
+(127, 114, 'Olivia', 'Adult'), (128, 114, 'Noah', 'Teen'),
+(129, 115, 'Emma', 'Adult'), (130, 115, 'James', 'Adult'), (131, 115, 'Peppa Fan', 'Kids'),
+(132, 116, 'Lukas', 'Adult'),
+(133, 117, 'Sophie', 'Adult'), (134, 117, 'Leo', 'Teen'),
+(135, 118, 'Arjun', 'Adult'),
+(136, 119, 'Gabriel', 'Adult'), (137, 119, 'Isabella', 'Adult'),
+(138, 120, 'Yui', 'Adult'), (139, 120, 'Ren', 'Kids'),
+(140, 121, 'Mike', 'Adult'), (141, 121, 'Sarah', 'Adult'), (142, 121, 'Dave', 'Teen'),
+(143, 122, 'Ana', 'Adult'),
+(144, 123, 'William', 'Adult'), (145, 123, 'Mia', 'Kids'),
+(146, 124, 'Karan', 'Adult'), (147, 124, 'Pooja', 'Adult'),
+(148, 125, 'Ethan', 'Adult'), (149, 125, 'Ava', 'Teen'),
+(150, 126, 'George', 'Adult'),
+(151, 127, 'Felix', 'Adult'), (152, 127, 'Clara', 'Teen'), (153, 127, 'Max', 'Kids'),
+(154, 128, 'Hugo', 'Adult'), (155, 128, 'Alice', 'Adult'),
+(156, 129, 'Pedro', 'Adult'),
+(157, 130, 'Hiro', 'Adult'), (158, 130, 'Mecha', 'Teen'),
+(159, 131, 'Daniel', 'Adult'), (160, 131, 'Lily', 'Kids');
+
+CREATE TABLE Content (
+    ContentID INT PRIMARY KEY,
+    Title VARCHAR(100),
+    ContentType VARCHAR(50),
+    Genre VARCHAR(50),
+    ReleaseYear INT,
+    DurationMins INT,
+    Rating VARCHAR(10)
+);
+INSERT INTO Content (ContentID, Title, ContentType, Genre, ReleaseYear, DurationMins, Rating) VALUES 
+(101, 'The Matrix', 'Movie', 'Sci-Fi', 1999, 136, 'R'),
+(102, 'Breaking Bad', 'TV Show', 'Drama', 2008, 47, 'TV-MA'),
+(103, 'Toy Story', 'Movie', 'Comedy', 1995, 81, 'G'),
+(104, 'Interstellar', 'Movie', 'Sci-Fi', 2014, 169, 'PG-13'),
+(105, 'The Crown', 'TV Show', 'Drama', 2016, 58, 'TV-MA'),
+(106, 'Jurassic Park', 'Movie', 'Action', 1993, 127, 'PG-13'),
+(107, 'Bluey', 'TV Show', 'Educational', 2018, 7, 'G'),
+(108, 'Gladiator', 'Movie', 'Action', 2000, 155, 'R'),
+(109, 'Friends', 'TV Show', 'Comedy', 1994, 22, 'TV-14'),
+(110, 'The Social Dilemma', 'Movie', 'Documentary', 2020, 94, 'PG-13'),
+(111, 'Spider-Man: No Way Home', 'Movie', 'Action', 2021, 148, 'PG-13'),
+(112, 'The Mandalorian', 'TV Show', 'Sci-Fi', 2019, 40, 'TV-14'),
+(113, 'Frozen', 'Movie', 'Comedy', 2013, 102, 'PG'),
+(114, 'Chernobyl', 'TV Show', 'Drama', 2019, 60, 'TV-MA'),
+(115, 'Mad Max: Fury Road', 'Movie', 'Action', 2015, 120, 'R'),
+(116, 'SpongeBob SquarePants', 'TV Show', 'Comedy', 1999, 23, 'TV-Y7'),
+(117, 'The Godfather', 'Movie', 'Drama', 1972, 175, 'R'),
+(118, 'Black Mirror', 'TV Show', 'Sci-Fi', 2011, 60, 'TV-MA'),
+(119, 'March of the Penguins', 'Movie', 'Documentary', 2005, 80, 'G'),
+(120, 'Parasite', 'Movie', 'Thriller', 2019, 132, 'R'),
+(121, 'Game of Thrones', 'TV Show', 'Action', 2011, 55, 'TV-MA'),
+(122, 'Shrek', 'Movie', 'Comedy', 2001, 90, 'PG'),
+(123, 'The Last Dance', 'TV Show', 'Documentary', 2020, 50, 'TV-14'),
+(124, 'Avatar', 'Movie', 'Sci-Fi', 2009, 162, 'PG-13'),
+(125, 'Succession', 'TV Show', 'Drama', 2018, 60, 'TV-MA'),
+(126, 'Titanic', 'Movie', 'Drama', 1997, 195, 'PG-13'),
+(127, 'Rick and Morty', 'TV Show', 'Comedy', 2013, 22, 'TV-MA'),
+(128, 'Free Solo', 'Movie', 'Documentary', 2018, 100, 'PG-13'),
+(129, 'Jaws', 'Movie', 'Thriller', 1975, 124, 'PG'),
+(130, 'The Witcher', 'TV Show', 'Action', 2019, 60, 'TV-MA'),
+(131, 'Up', 'Movie', 'Comedy', 2009, 96, 'PG'),
+(132, 'Mindhunter', 'TV Show', 'Thriller', 2017, 50, 'TV-MA'),
+(133, 'The Lord of the Rings: The Fellowship of the Ring', 'Movie', 'Action', 2001, 178, 'PG-13'),
+(134, 'Sesame Street', 'TV Show', 'Educational', 1969, 30, 'G'),
+(135, 'Whiplash', 'Movie', 'Drama', 2014, 106, 'R'),
+(136, 'Dark', 'TV Show', 'Sci-Fi', 2017, 50, 'TV-MA'),
+(137, 'Inside Out', 'Movie', 'Comedy', 2015, 95, 'PG'),
+(138, 'Making a Murderer', 'TV Show', 'Documentary', 2015, 60, 'TV-14'),
+(139, 'John Wick', 'Movie', 'Action', 2014, 101, 'R'),
+(140, 'Narcos', 'TV Show', 'Drama', 2015, 49, 'TV-MA'),
+(141, 'Coco', 'Movie', 'Comedy', 2017, 105, 'PG'),
+(142, 'The Boys', 'TV Show', 'Action', 2019, 60, 'TV-MA'),
+(143, '1917', 'Movie', 'Action', 2019, 119, 'R'),
+(144, 'Severance', 'TV Show', 'Sci-Fi', 2022, 50, 'TV-MA'),
+(145, 'Lion King', 'Movie', 'Comedy', 1994, 88, 'G'),
+(146, 'Bill Nye the Science Guy', 'TV Show', 'Educational', 1993, 26, 'G'),
+(147, 'Get Out', 'Movie', 'Thriller', 2017, 104, 'R'),
+(148, 'Better Call Saul', 'TV Show', 'Drama', 2015, 50, 'TV-MA'),
+(149, 'Forrest Gump', 'Movie', 'Drama', 1994, 142, 'PG-13'),
+(150, 'Peaky Blinders', 'TV Show', 'Drama', 2013, 55, 'TV-MA');
+ 
+ 
+CREATE TABLE Watch_History (
+    HistoryID INT PRIMARY KEY,
+    ProfileID INT,
+    ContentID INT,
+    WatchDate DATETIME,
+    MinutesWatched INT CHECK (MinutesWatched >= 0),
+    FOREIGN KEY (ProfileID) REFERENCES Profiles(ProfileID),
+    FOREIGN KEY (ContentID) REFERENCES Content(ContentID)
+);
+INSERT INTO Watch_History (HistoryID, ProfileID, ContentID, WatchDate, MinutesWatched) VALUES 
+
+(101, 101, 102, '2024-09-01 20:00:00', 141), 
+(102, 113, 105, '2024-09-02 18:30:00', 116), 
+(103, 124, 118, '2024-09-05 21:00:00', 180), 
+(104, 140, 121, '2024-09-10 19:00:00', 220), 
+
+(105, 102, 104, '2024-09-03 20:00:00', 169), 
+(106, 105, 101, '2024-09-04 21:15:00', 136), 
+(107, 110, 117, '2024-09-08 19:00:00', 175), 
+(108, 126, 124, '2024-09-12 20:00:00', 162), 
+(109, 133, 133, '2024-09-15 18:00:00', 178), 
+(110, 150, 149, '2024-09-20 20:00:00', 142), 
+
+(111, 101, 120, '2024-09-05 21:00:00', 12),  
+(112, 116, 111, '2024-09-06 20:30:00', 5),   
+(113, 129, 126, '2024-09-07 19:45:00', 18),  
+(114, 135, 139, '2024-09-09 22:00:00', 4),   
+(115, 146, 147, '2024-09-11 23:15:00', 8),   
+
+(116, 103, 107, '2024-09-01 08:00:00', 35),  
+(117, 103, 103, '2024-09-02 09:00:00', 81),  
+(118, 109, 116, '2024-09-03 15:30:00', 69),  
+(119, 123, 113, '2024-09-05 16:00:00', 102), 
+(120, 131, 134, '2024-09-07 10:00:00', 60),  
+(121, 145, 141, '2024-09-10 14:00:00', 105), 
+(122, 153, 145, '2024-09-12 16:30:00', 88),  
+(123, 160, 107, '2024-09-14 09:15:00', 42),  
+
+(124, 108, 112, '2024-09-02 16:00:00', 80),  
+(125, 111, 127, '2024-09-04 17:30:00', 66),  
+(126, 118, 111, '2024-09-06 19:00:00', 148), 
+(127, 120, 121, '2024-09-08 21:00:00', 55),  
+(128, 122, 109, '2024-09-10 15:00:00', 110), 
+(129, 134, 142, '2024-09-14 20:30:00', 120), 
+(130, 149, 112, '2024-09-18 16:45:00', 40),  
+
+(131, 114, 110, '2024-09-01 20:00:00', 94),  
+(132, 114, 119, '2024-09-03 19:30:00', 80),  
+(133, 114, 128, '2024-09-06 21:00:00', 100), 
+(134, 151, 123, '2024-09-11 18:00:00', 150), 
+(135, 151, 138, '2024-09-15 20:00:00', 120), 
+
+(136, 125, 108, '2024-09-05 21:00:00', 155), 
+(137, 125, 103, '2024-09-07 10:00:00', 81),  
+(138, 125, 114, '2024-09-09 20:30:00', 60),  
+
+(139, 104, 109, '2024-09-01 18:00:00', 22),  
+(140, 117, 125, '2024-09-03 21:00:00', 60),  
+(141, 127, 130, '2024-09-05 22:00:00', 60),  
+(142, 132, 132, '2024-09-07 20:15:00', 50),  
+(143, 143, 136, '2024-09-10 23:00:00', 50),  
+
+(144, 101, 139, '2024-09-12 21:00:00', 101), 
+(145, 106, 148, '2024-09-14 20:00:00', 100), 
+(146, 112, 144, '2024-09-16 19:30:00', 50),  
+(147, 119, 115, '2024-09-18 21:45:00', 120), 
+(148, 136, 150, '2024-09-20 22:00:00', 110), 
+(149, 156, 140, '2024-09-22 20:30:00', 147), 
+(150, 154, 106, '2024-09-24 19:00:00', 127), 
+(151, 108, 118, '2024-09-25 21:00:00', 60),  
+(152, 111, 127, '2024-09-26 17:00:00', 44),  
+(153, 103, 141, '2024-09-27 09:00:00', 105), 
+(154, 150, 117, '2024-09-28 20:00:00', 175); 
+
+#A. User & Basic Analysis
+#1.NetFlix wants to maintain a user directory. Display complete details of all registered users.
+select * from users; 
+
+#2.Management wants to know the different countries StreamFlix users are coming from. Display the unique user countries.
+select distinct * from users;
+
+#3.Identify all users whose current account status is 'Active'. 
+select * from users where Status = 'Active';
+
+#4.Find users who are registered in either the 'Premium' or 'Standard' plan (PlanID 2 or 3).
+select *from users where PlanID in (2,3);
+
+#5.Identify users who are registered in countries other than the 'United Kingdom'.
+select * from users where country <> 'United Kingdom';
+
+#6.Find users who registered between January 1, 2023, and December 31, 2023, for cohort analysis.
+select *from users where RegistrationDate between '2023-01-01' and '2023-12-31';
+
+#7.Identify users belonging to 'Canada', 'Australia', 'Germany', or 'France'. 
+select * from users where Country in ('Canada', 'Australia', 'Germany', 'France');
+
+#8.Find users whose email addresses begin with the letter 'M' (e.g., marie.dupont). 
+select * from users where email like 'M%';
+
+#9.Identify users whose billing country is missing in the database records. 
+select * from users where country is null;
+
+#10.Identify users who have a registered email address on file. 
+select * from users where email is not null;
+
+#11.Display user accounts ordered from oldest registration date to newest to identify long-term loyal customers.
+select * from users order by RegistrationDate asc;
+
+#12.Identify the top 5 most recently registered users to track daily acquisition. 
+select * from users order by RegistrationDate desc limit 5;
+
+#13.Find 'Active' users who are currently registered in the 'United States' or 'India'. 
+select * from users where  status = 'active' and country in ('United States' , 'India');
+
+#14.Generate a formatted display label for customer service agents that combines the user's Email and their Country .
+select UserID ,concat(Email,"-",country) as userlocationlebel from users; 
+
+#15.Ensure all user emails are standardized in entirely lowercase letters for the data warehouse migration.
+select UserID, lower(email) as stadardizedemail from users;
+
+#16.Extract just the first 4 characters of the User's Email to create a short, temporary username.
+select UserID, substring(email,1,4) as shortusername from users;
+
+#17.The data team is generating a daily report of all active users. Add a column called ReportGeneratedDate that stamps every row with today's exact date.
+select UserID,status,curdate() as ReportGeneratedDate from users where status= "active";
+
+#18.The finance team wants to analyze yearly growth. Extract just the year from the RegistrationDate to see what year each user joined.
+select userid,year(registrationDate) as joinyear from users ;
+
+#19.Marketing wants to see if there is a seasonal spike in signups (like around the holidays). Extract the month name from every user's registration date.
+select UserID,monthname(registrationdate) as join_month from users;
+
+#20.Customer success wants to calculate the "Account Age" for every user. Find the number of days between the user's RegistrationDate and today.
+select UserID,datediff(curdate(),RegistrationDate) as account_age_day from users;
+
+#B. Profile & Demographic Segmentation
+#1.Identify profiles that belong to the 'Kids' age group. 
+select *from profiles where AgeGroup = 'kids';
+
+#2.Find profiles whose profile names contain the word 'Guest'. 
+select *from profiles where ProfileName like '%Guest%';
+
+#3.Display profiles belonging to users from 'India' that are grouped under the 'Adult' age category. 
+select * from users as u
+join profiles as p on u.UserID=p.UserID
+where Country = 'India';
+
+#4.Identify profiles whose age group is neither 'Kids' nor 'Teen'. 
+select * from profiles where AgeGroup not in ('kids','teen');
+
+#5.Display profiles whose name starts with the letter 'S' (e.g., Sarah, Sneha). 
+select *from profiles where ProfileName like "s%";
+
+#6.Find users whose email addresses belong to the Gmail domain. 
+select * from users where email like "%@gmail.com";
+
+#7.Sometimes users accidentally type an extra space before or after their profile name.
+select profileid,trim(profilename) standardized_Profilename from profiles;
+
+#C. Content Library Monitoring
+#1.Display all content with their type, title, genre, and duration. 
+select *from content;
+
+#2.Identify movies (ContentType = 'Movie') that have a duration strictly greater than 120 minutes. 
+select *from content where ContentType ='movie' and DurationMins > 120;
+
+#3.Find content with a duration between 30 and 90 minutes. 
+select *from content where DurationMins between 30 and 90;
+
+#4.Identify content that belongs to the 'Documentary' or 'Educational' genre. 
+select *from content where genre in ('Documentary' , 'Educational');
+
+#5.Display the single movie with the shortest duration in the catalog. 
+select *from content order by DurationMins asc limit 1;
+
+#6.Calculate the total number of content titles available on the platform. 
+select count(title) as total_titles from content;
+select count(*) as total_titles from content;
+
+#7.Calculate the average duration of all movies in the 'Action' genre. 
+select avg(durationmins) from content where ContentType = 'movie' and Genre = 'action';
+
+#8.The marketing team wants a list of all movie titles displayed in ALL CAPS for a new promotional flyer.
+select contentId,upper(title) as standardize_titles from content;
+
+#9.Find the length (number of characters) of each content title to identify long titles that might get cut off on the mobile app UI.
+select contentid,length(title) as title_length from content;
+
+#D. Subscription Plan & Revenue Analysis
+#1.Display all subscription plans along with their price and max resolution details. 
+select * from plans;
+
+#2.Identify plans that offer '4K' resolution. 
+select * from plans where MaxResolution = '4k';
+
+#3.Find the number of users subscribed to each plan type. 
+select p.planname,count(u.userid) as total_subscribers from users as u
+join plans as p on u.PlanID=p.PlanID
+group by p.PlanName
+order by count(u.userid) desc;
+
+#4.Calculate the total potential monthly revenue generated by all 'Active' users per plan.  
+select u.status,sum(p.monthlyprice) as total_active_revenue
+from plans as p 
+join users as u on p.PlanID=u.PlanID
+where u.Status = 'active';
+
+#5.Identify plans that have more than 10 active subscribers in this dataset. 
+select p.Planname,count(u.UserID) as active_subscriber
+from plans as p 
+join users as u on p.PlanID=u.PlanID
+group by p.PlanName
+having count(u.UserID)> 10
+order by active_subscriber desc;
+
+#6.Find the PlanName with the highest number of registered users. 
+select p.planname, count(u.userid)
+from plans as p 
+join users as u on p.PlanID=u.PlanID
+group by p.PlanName
+order by count(u.userid)
+desc limit 1;
+
+#7.The platform is rebranding the "Standard" plan to be called "Regular". Display the plans, replacing the word "Standard" with "Regular".
+select Planid,replace(planName,"Standard","Regular") as standardized_planname from plans;
+
+#E. Viewing Activity & Engagement Analysis
+#1.Display all watch history along with profile names and watch dates. 
+select w.HistoryID,w.ProfileID,w.ContentID,w.WatchDate,w.MinutesWatched,p.profilename
+from watch_history as W
+join profiles as p on w.profileid=p.ProfileID
+order by w.WatchDate desc;
+
+#2.Identify profiles that have watched a 'TV Show' in the last 30 days. 
+select p.profileid,p.profilename,c.contenttype,w.WatchDate
+from profiles as p
+join watch_history as w on p.ProfileID=w.ProfileID
+join content as c on w.ContentID=c.ContentID
+where c.ContentType= 'Tv show' and
+datediff(curdate(),watchdate)<=30;
+
+#3.Find profiles that have watched both 'Movies' and 'TV Shows'. 
+select p.profileid, p.profilename, c.contenttype
+from profiles as p
+join watch_history as w on p.ProfileID=w.ProfileID
+join content as c on w.ContentID=c.ContentID;
+
+#4.Identify specific watch sessions where the MinutesWatched is greater than 150 minutes.
+select *from watch_history where MinutesWatched >150;
+
+#5.Calculate the total watch time (in minutes) for each content genre. 
+select c.genre,sum(w.minuteswatched) as total_watchtime
+from content as c
+join watch_history as w on c.ContentID=w.ContentID
+group by c.genre 
+order by sum(w.MinutesWatched) desc;
+
+#6.Find the average watch time per session for each specific AgeGroup. 
+select p.agegroup,avg(w.minuteswatched) as average_watchtime
+from profiles as p 
+join watch_history as w on p.ProfileID=w.ProfileID
+group by p.AgeGroup
+order by avg(w.minuteswatched) desc;
+
+#7.Identify the profile with the highest total MinutesWatched across all time. 
+select p.profileid,sum(w.minuteswatched) as total_watchtime
+from profiles as p
+join watch_history as w on p.ProfileID=w.ProfileID
+group by p.ProfileID
+order by sum(w.minuteswatched)
+desc
+limit 1 ;
+
+#8.The content team wants to know if people watch more shows on weekends.Extract the name of the day.
+select *,dayname(watchdate) as Day_Name from watch_history;
+
+#F. Content Performance Analysis
+#1.Display all 'Sci-Fi' movies along with their release years and ratings. 
+SELECT Title, ReleaseYear, rating from content 
+where ContentType = "Movie" and genre = "sci-fi";
+
+#2.Identify content titles that have been watched for a total of more than 300 minutes platform-wide. 
+SELECT c.Title, SUM(w.MinutesWatched) AS TotalMinutes
+FROM Watch_History as w
+JOIN Content as c ON w.ContentID = c.ContentID
+GROUP BY c.Title
+HAVING SUM(w.MinutesWatched) > 300
+ORDER BY TotalMinutes DESC;
+
+#3.Calculate the total watch time for each specific ContentType (Movie vs. TV Show). 
+select c.contenttype, sum(w.minuteswatched) as total_watch
+from content as c
+join watch_history as w on c.ContentID=w.ContentID
+group by c.ContentType;
+
+#4.Identify the specific Content Title with the highest overall watch time. 
+select c.title,sum(w.minuteswatched) as highest_watchtime
+from content as c
+join watch_history as w on c.ContentID=w.ContentID
+group by c.Title
+order by sum(w.MinutesWatched) desc
+limit 1; 
+
+#5.Identifying "Dead" Content:
+SELECT c.Title,c.ContentType,SUM(w.MinutesWatched) AS TotalMinutes
+FROM Watch_History w
+RIGHT JOIN Content c ON w.ContentID = c.ContentID
+GROUP BY c.Title, c.ContentType
+ORDER BY TotalMinutes ASC;
+
+#G. User Viewing Behavior
+#1.Identify users who have an 'Active' subscription status but 0 records in the WatchHistory table.
+select u.userid,u.status,w.minuteswatched
+from users as u
+left join profiles as p on u.UserID=p.UserID
+left join watch_history as w on p.ProfileID=w.ProfileID
+where u.Status = 'Active'and w.MinutesWatched is null; 
+
+#2.Identify users who have created multiple profiles (more than 3).
+SELECT u.UserID,u.Email,COUNT(p.ProfileID) AS ProfileCount
+FROM Users as u
+JOIN Profiles as p ON u.UserID = p.UserID
+GROUP BY u.UserID, u.Email
+HAVING COUNT(p.ProfileID) > 3;
+
+#3.Find profiles who have both a 'Kids' AgeGroup and have watched 'R-rated' content.
+select distinct p.agegroup,p.profilename,p.profileid,c.rating
+from profiles as p
+join watch_history as w on p.ProfileID=w.ProfileID
+join content as c on w.ContentID=c.ContentID
+where p.AgeGroup = 'kids' and c.Rating ='R';
+
+#H.User & Platform Relationship Analysis
+#1.Display each profile's name along with the subscription plan name their parent account is paying for.
+select p.profilename,pl.planname
+from profiles as p
+join users as u on p.UserID=u.userid
+left join plans as pl on u.PlanID=pl.PlanID;
+
+#2.Generate a consolidated dashboard view showing User Email, Profile Name, Plan Name, Content Title, and Minutes Watched for every viewing session.
+create view Dashboard_View as
+select U.email,p.profileName,pl.planname,c.title,w.minuteswatched
+from users as u
+left join plans as pl on u.PlanID=pl.PlanID
+join profiles as p on u.UserID=p.UserID
+join watch_history as w on p.ProfileID=w.ProfileID
+join content as c on w.ContentID=c.ContentID;
+
+select * from dashboard_view;
+
+#3.Identify profiles operating under the same User Account.
+SELECT UserID, COUNT(ProfileID) AS TotalProfiles, GROUP_CONCAT(ProfileName) AS ProfileList
+FROM profiles 
+GROUP BY UserID; 
+
+#I. Advanced & Cross-Content Preference Analysis
+#1.Identify users who have a 'Premium' plan but only have 1 profile created (Underutilizing their plan).
+select u.userid,p.planname,count(pro.profileid) as total_profile
+from users as u
+join plans as p on u.PlanID=p.PlanID
+join profiles as pro on u.UserID=pro.UserID
+where p.PlanName = 'premium'
+group by u.UserID
+having count(pro.profileid) =1;
+
+#2.Rank the most popular content (by total MinutesWatched) within each specific genre.
+SELECT c.Genre,c.Title,SUM(w.MinutesWatched) AS TotalMinutesWatched,DENSE_RANK() OVER (
+PARTITION BY c.Genre ORDER BY SUM(w.MinutesWatched) DESC) AS popularity_rank
+FROM Content c
+JOIN watch_history w ON c.ContentID = w.ContentID
+GROUP BY c.Genre, c.Title;
+ 
+#3.Cross-Genre Audience Overlap:
+SELECT w.ProfileID
+FROM Watch_History as w
+INNER JOIN Content as c ON w.ContentID = c.ContentID
+WHERE c.Genre = 'Sci-Fi'
+
+INTERSECT
+
+SELECT w.ProfileID
+FROM Watch_History as w
+INNER JOIN Content as c ON w.ContentID = c.ContentID
+WHERE c.Genre = 'Documentary';
+
+#J. Customer & Content Risk Classification (CASE Statements).
+#1.Classify profiles into 'Children', 'Teenagers', and 'Adults' based on their AgeGroup.
+select agegroup,ProfileName,ProfileID,
+case
+when AgeGroup= 'kids' then 'Childrens'
+when AgeGroup='teen' then 'Teenagers'
+when AgeGroup='adult' then 'Adults'
+else 'Unknown'
+end as Audience_Category
+from profiles;
+
+#2.Classify content duration into 'Short' (<40 mins), 'Standard' (40-120 mins), and 'Epic' (>120 mins).
+select durationmins,ContentType,Title,
+case
+when durationmins <40 then 'short'
+when durationmins between 40 and 120 then 'standard'
+when durationmins >120 then 'Epic'
+else 'Unknown'
+end as content_category
+from content;
+
+#3.Classify watch sessions into 'Bounce' (<15 mins), 'Casual' (15-60 mins), and 'Binge' (>60 mins) based on minutes watched.
+select minuteswatched,
+case
+when minuteswatched <15 then 'Bounce'
+when minuteswatched between 15 and 60 then 'casual'
+when minuteswatched >60 then 'binge'
+else 'unknown'
+end as watch_sessions
+from watch_history;
+
+#4.Classify User accounts based on their status as 'Active', 'Suspended', or 'Cancelled'.
+select userId,email,country,status,
+case
+when status = 'Active' then 'No risk'
+when status ='Suspended' then 'At Risk'
+when status = 'Cancelled' then 'Churned'
+else 'unknown'
+end as Risk_level
+from users;
+
+#5.We need to send a targeted email to profiles that belong to users who have a 'Cancelled' account status.Find the Profile Names of all profiles whose parent user account is 'Cancelled'
+select profilename,AgeGroup from profiles where UserID IN (select UserID from users where Status="Cancelled");
+
+#6.The marketing team wants to segment users based on location.Create a report showing user emails and a new column called UserMarket.
+select email,country,if(country="United States","Domestic","International") as Usermarket from users;
+
